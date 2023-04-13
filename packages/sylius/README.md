@@ -25,7 +25,7 @@ Sylius is an open-source e-commerce platform written in PHP. It is built on top 
 2. With this command, copy the `.env.template` file in this directory to `.env.local` in the main directory (which will be ignored by Git):
 
 ```
-cp packages/sylius/.env.template .env.local
+cp packages/sylius/.env.template site/.env
 ```
 
 3. Set the environment following variables in your .env.local. Both, NEXT_PUBLIC_SYLIUS_API_URL and NEXT_PUBLIC_SYLIUS_ALLOWED_IMAGE_DOMAIN must point to your own Sylius instance.
