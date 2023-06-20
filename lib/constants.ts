@@ -26,4 +26,4 @@ export const TAGS = {
   cart: 'cart'
 };
 
-export const SYLIUS_API_ENDPOINT = '/api/v2';
+export const SYLIUS_API_ENDPOINT = '/api/v2/shop';
