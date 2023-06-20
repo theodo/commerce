@@ -48,7 +48,7 @@ const normalizeProductOption = (option: SyliusProductOption): ProductOption => (
 });
 
 export const normalizeProductImage = (image: SyliusProductImage): Image => ({
-  url: process.env.NEXT_PUBLIC_SYLIUS_API_URL + image.path,
+  url: process.env.NEXT_PUBLIC_SYLIUS_BACKEND_API + image.path,
   altText: image.path,
   width: 400,
   height: 400

@@ -1,5 +1,4 @@
 import { getCollections, getPages, getProducts } from 'lib/sylius';
-import { validateEnvironmentVariables } from 'lib/utils';
 import { MetadataRoute } from 'next';
 
 type Route = {
