@@ -25,4 +25,4 @@ export const TAGS = {
   products: 'products'
 };
 
-export const SYLIUS_API_ENDPOINT = '/api/v2';
+export const SYLIUS_API_ENDPOINT = '/api/v2/shop';
