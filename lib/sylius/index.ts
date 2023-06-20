@@ -12,7 +12,7 @@ import {
   UpdateCartPayload
 } from './types';
 
-const DOMAIN = `${process.env.SYLIUS_STORE_DOMAIN}`;
+const DOMAIN = `${process.env.NEXT_PUBLIC_SYLIUS_BACKEND_API}`;
 const ENDPOINT = `${DOMAIN}${SYLIUS_API_ENDPOINT}`;
 
 // Fetch
