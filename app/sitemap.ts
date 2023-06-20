@@ -1,4 +1,4 @@
-import { getCollections, getPages, getProducts } from 'lib/shopify';
+import { getCollections, getPages, getProducts } from 'lib/sylius';
 import { MetadataRoute } from 'next';
 
 type Route = {
