@@ -72,7 +72,6 @@ export function AddToCart({
 }) {
   const [message, formAction] = useFormState(addItem, null);
   const searchParams = useSearchParams();
-  const [isPending, startTransition] = useTransition();
   const defaultVariantId = variants.length === 1 ? variants[0]?.code : undefined;
   const variant = variants.find((variant: ProductVariant) =>
     variant.selectedOptions.every(
