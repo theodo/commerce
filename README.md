@@ -32,8 +32,8 @@ Start right now at [nextjs.org/commerce](https://nextjs.org/commerce)
 
 ### Setup Sylius
 
-1. You need a (Sylius)[https://sylius.com/download/] instance, either in the cloud or self-hosted.
-2. Follow the Read-Me of this (repository)[https://github.com/theodo/sylius-commerce-config] to configure your Sylius Project
+1. You need a [Sylius](https://sylius.com/download/) instance, either in the cloud or self-hosted.
+2. Follow the Read-Me of this [repository](https://github.com/theodo/sylius-commerce-config) to configure your Sylius Project
 
 ### Setup NextsJs Commerce
 
