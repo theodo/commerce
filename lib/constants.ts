@@ -26,3 +26,10 @@ export const TAGS = {
 };
 
 export const SYLIUS_API_ENDPOINT = '/api/v2/shop';
+
+export const REST_METHODS = {
+  GET: 'GET',
+  POST: 'POST',
+  PUT: 'PUT',
+  DELETE: 'DELETE'
+};
