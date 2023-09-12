@@ -1,4 +1,4 @@
-import { SYLIUS_API_ENDPOINT } from 'lib/constants';
+import { REST_METHODS, SYLIUS_API_ENDPOINT } from 'lib/constants';
 
 const DOMAIN = `${process.env.SYLIUS_STORE_DOMAIN}`;
 const ENDPOINT = `${DOMAIN}${SYLIUS_API_ENDPOINT}`;
@@ -53,7 +53,7 @@ export const getCollectionProducts = () => [];
 
 // Cart
 export const createCart = async () => {
-  const cart = await syliusRequest('POST', '/orders', { localeCode: 'fr_FR' });
+  const cart = await syliusRequest(REST_METHODS.POST, '/orders', { localeCode: 'fr_FR' });
   return cart;
 };
 export const getCart = (cartId: string) => {
