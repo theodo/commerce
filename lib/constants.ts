@@ -26,6 +26,10 @@ export const TAGS = {
   cart: 'cart'
 };
 
+export const DEFAULT_OPTION = 'Default Title';
+
+export const HIDDEN_PRODUCT_TAG = 'nextjs-frontend-hidden';
+
 export const SYLIUS_API_ENDPOINT = '/api/v2/shop';
 
 export const REST_METHODS = {

@@ -33,6 +33,10 @@ export interface Money {
 }
 
 export interface Product {
+  seo?: {
+    title?: string;
+    description?: string;
+  };
   variants: ProductVariant[];
   images: Image[];
   id: string;
@@ -79,3 +83,27 @@ export interface Menu {
   title: string;
   path: string;
 }
+
+export interface Collection {
+  seo?: {
+    title?: string;
+    description?: string;
+  };
+  code: string;
+  title: string;
+  path: string;
+}
+
+export interface GetCollectionProductsPayload {
+  collection?: string;
+  sortKey?: 'RELEVANCE' | 'BEST_SELLING' | 'CREATED_AT' | 'PRICE';
+  reverse?: boolean;
+}
+
+export interface GetProductsPayload {
+  sortKey?: 'RELEVANCE' | 'BEST_SELLING' | 'CREATED_AT' | 'PRICE';
+  reverse?: boolean;
+  query?: string;
+}
+
+export type AddToCartPayload = { merchandiseId: string; quantity: number };
