@@ -7,6 +7,10 @@ import {
 import { Image, Money, Product, ProductOption, ProductVariant } from '../types';
 
 export const normalizeProduct = (product: SyliusProduct): Product => ({
+  seo: {
+    title: product.name,
+    description: product.shortDescription
+  },
   variants: product.variants.map((variant) => normalizeProductVariant(variant)),
   images: product.images.map((image) => normalizeProductImage(image)),
   id: product.id.toString(),
