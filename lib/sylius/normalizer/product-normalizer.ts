@@ -15,7 +15,7 @@ export const normalizeProduct = (product: SyliusProduct): Product => ({
   images: product.images.map((image) => normalizeProductImage(image)),
   id: product.id.toString(),
   handle: product.slug,
-  availableForSale: product.enabled,
+  availableForSale: product.variants.some((variant) => variant.inStock),
   title: product.name,
   description: product.shortDescription,
   descriptionHtml: product.description,
