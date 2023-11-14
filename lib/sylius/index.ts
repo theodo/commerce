@@ -2,7 +2,7 @@ import { REST_METHODS, SYLIUS_API_ENDPOINT } from 'lib/constants';
 import { normalizeCollection } from './normalizer/collection-normalizer';
 import { normalizeProduct } from './normalizer/product-normalizer';
 import { SyliusProduct, SyliusTaxon } from './sylius-types/product-types';
-import { AddToCartPayload, GetCollectionProductsPayload, GetProductsPayload } from './types';
+import { AddToCartPayload, Collection, GetCollectionProductsPayload, GetProductsPayload } from './types';
 
 const DOMAIN = `${process.env.SYLIUS_STORE_DOMAIN}`;
 const ENDPOINT = `${DOMAIN}${SYLIUS_API_ENDPOINT}`;
@@ -93,7 +93,7 @@ export const getProduct = async (slug: string) => {
 export const getProductRecommendations = () => {
   return [];
 };
-export const getCollections = async () => {
+export const getCollections = async (): Promise<Collection[]> => {
   const data = await syliusRequest(REST_METHODS.GET, '/taxons');
 
   const syliusTaxons = data.body;
@@ -162,9 +162,13 @@ export const removeFromCart = () => {};
 export const updateCart = () => {};
 
 // Site
-export const getMenu = () => [
-  {
-    title: 'All',
-    path: '/search'
-  }
-];
+export const getMenu =  async () => {
+  const collections = await getCollections();
+  return [
+    {
+      title: 'All',
+      path: '/search'
+    },
+    ...collections.slice(0,2).map(({ title, path }) => ({ title, path }))
+  ];
+};
