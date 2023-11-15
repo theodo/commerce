@@ -4,7 +4,8 @@ import {
   SyliusProductOption,
   SyliusProductVariant
 } from '../sylius-types/product-types';
-import { Image, Money, Product, ProductOption, ProductVariant } from '../types';
+import { Image, Product, ProductOption, ProductVariant } from '../types';
+import { normalizePrice } from './utils-normalizer';
 
 export const normalizeProduct = (product: SyliusProduct): Product => ({
   seo: {
@@ -49,11 +50,6 @@ export const normalizeProductImage = (image: SyliusProductImage): Image => ({
   altText: image.path,
   width: 400,
   height: 400
-});
-
-const normalizePrice = (amount: number): Money => ({
-  amount: (amount / 100).toString(),
-  currencyCode: 'EUR'
 });
 
 const normalizePriceRange = (product: SyliusProduct) => {
