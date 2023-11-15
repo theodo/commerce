@@ -1,8 +1,15 @@
 import { REST_METHODS, SYLIUS_API_ENDPOINT } from 'lib/constants';
+import { normalizeCart } from './normalizer/cart-normalizer';
 import { normalizeCollection } from './normalizer/collection-normalizer';
 import { normalizeProduct } from './normalizer/product-normalizer';
 import { SyliusProduct, SyliusTaxon } from './sylius-types/product-types';
-import { AddToCartPayload, Collection, GetCollectionProductsPayload, GetProductsPayload } from './types';
+import {
+  AddToCartPayload,
+  Cart,
+  Collection,
+  GetCollectionProductsPayload,
+  GetProductsPayload
+} from './types';
 
 const DOMAIN = `${process.env.SYLIUS_STORE_DOMAIN}`;
 const ENDPOINT = `${DOMAIN}${SYLIUS_API_ENDPOINT}`;
@@ -146,9 +153,11 @@ export const getCollectionProducts = async (payload: GetCollectionProductsPayloa
 };
 
 // Cart
-export const createCart = async () => {
-  const cart = await syliusRequest(REST_METHODS.POST, '/orders', { localeCode: 'fr_FR' });
-  return cart;
+export const createCart = async (): Promise<Cart> => {
+  const data = await syliusRequest(REST_METHODS.POST, '/orders', { localeCode: 'fr_FR' });
+  const syliusCart = data.body;
+
+  return normalizeCart(syliusCart);
 };
 export const getCart = (cartId: string) => {
   syliusRequest(REST_METHODS.GET, `/orders/${cartId}`);
@@ -162,13 +171,13 @@ export const removeFromCart = () => {};
 export const updateCart = () => {};
 
 // Site
-export const getMenu =  async () => {
+export const getMenu = async () => {
   const collections = await getCollections();
   return [
     {
       title: 'All',
       path: '/search'
     },
-    ...collections.slice(0,2).map(({ title, path }) => ({ title, path }))
+    ...collections.slice(0, 2).map(({ title, path }) => ({ title, path }))
   ];
 };
