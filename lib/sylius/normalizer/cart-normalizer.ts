@@ -40,11 +40,11 @@ const normalizeOrderItemOptionValue = (
   optionValue: SyliusProductOptionValue,
   options: SyliusProductOption[]
 ): { name: string; value: string } => {
-  const rightOption = options.filter((option) =>
+  const selectedOption = options.filter((option) =>
     option.values.some((value) => value.code === optionValue.code)
   )[0];
   return {
-    name: rightOption?.name ?? '',
+    name: selectedOption?.name ?? '',
     value: optionValue.value
   };
 };
