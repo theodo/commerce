@@ -1,6 +1,8 @@
 import { Money } from '../types';
 
 export const normalizePrice = (amount: number): Money => ({
-  amount: (amount / 100).toString(),
+  amount: centsPriceToUnitsPrice(amount).toString(),
   currencyCode: 'EUR'
 });
+
+export const centsPriceToUnitsPrice = (amount: number): number => amount / 100;
