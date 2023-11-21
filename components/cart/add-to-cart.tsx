@@ -72,13 +72,14 @@ export function AddToCart({
 }) {
   const [message, formAction] = useFormState(addItem, null);
   const searchParams = useSearchParams();
-  const defaultVariantId = variants.length === 1 ? variants[0]?.id : undefined;
+  const [isPending, startTransition] = useTransition();
+  const defaultVariantId = variants.length === 1 ? variants[0]?.code : undefined;
   const variant = variants.find((variant: ProductVariant) =>
     variant.selectedOptions.every(
       (option) => option.value === searchParams.get(option.name.toLowerCase())
     )
   );
-  const selectedVariantId = variant?.id || defaultVariantId;
+  const selectedVariantId = variant?.code || defaultVariantId;
   const actionWithVariant = formAction.bind(null, selectedVariantId);
 
   return (
