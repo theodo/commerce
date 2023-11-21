@@ -12,18 +12,16 @@ export const normalizeProduct = (product: SyliusProduct): Product => ({
     title: product.name,
     description: product.shortDescription
   },
-  // dont need varaints when serializing fort cart
-  variants: product.variants
-    ? product.variants.map((variant) => normalizeProductVariant(variant))
-    : [],
-  images: product.images.map((image) => normalizeProductImage(image)),
+  // variants not needed for cart normalization
+  variants: product.variants ? product.variants.map(normalizeProductVariant) : [],
+  images: product.images.map(normalizeProductImage),
   id: product.id.toString(),
   handle: product.slug,
   availableForSale: product.variants.some((variant) => variant.inStock),
   title: product.name,
   description: product.shortDescription,
   descriptionHtml: product.description,
-  options: product.options.map((option) => normalizeProductOption(option)),
+  options: product.options.map(normalizeProductOption),
   priceRange: normalizePriceRange(product),
   featuredImage: normalizeProductImage(product.images[0] as SyliusProductImage),
   tags: [],
