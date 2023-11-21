@@ -63,6 +63,7 @@ export interface ProductOption {
 
 export interface ProductVariant {
   id: string;
+  code: string;
   title: string;
   availableForSale: boolean;
   selectedOptions: {
