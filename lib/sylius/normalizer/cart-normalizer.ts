@@ -14,7 +14,7 @@ export const normalizeCart = (syliusCart: SyliusCart): Cart => {
       totalTaxAmount: normalizePrice(syliusCart.taxTotal),
       shippingAmount: normalizePrice(syliusCart.shippingTotal)
     },
-    lines: syliusCart.items.map((item) => normalizeCartItem(item)),
+    lines: syliusCart.items.map(normalizeCartItem),
     totalQuantity: syliusCart.items.reduce((acc, item) => acc + item.quantity, 0)
   };
 };
