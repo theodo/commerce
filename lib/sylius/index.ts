@@ -164,9 +164,11 @@ export const getCart = async (cartId: string): Promise<Cart> => {
   const syliusCart = data.body;
   return normalizeCart(syliusCart);
 };
-export const addToCart = (cartId: string | undefined, payload: AddToCartPayload[]) => {
-  syliusRequest(REST_METHODS.PUT, `/orders/${cartId}/items`, payload[0]);
-  return {};
+export const addToCart = async (cartId: string | undefined, payload: AddToCartPayload[]) => {
+  await syliusRequest(REST_METHODS.POST, `/orders/${cartId}/items`, {
+    productVariant: payload[0]?.merchandiseId,
+    quantity: payload[0]?.quantity
+  });
 };
 export const removeFromCart = () => {};
 export const updateCart = () => {};
