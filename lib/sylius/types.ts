@@ -5,6 +5,7 @@ export interface Cart {
     subtotalAmount: Money;
     totalAmount: Money;
     totalTaxAmount: Money;
+    shippingAmount: Money;
   };
   lines: CartItem[];
   totalQuantity: number;
