@@ -30,6 +30,7 @@ export const normalizeProduct = (product: SyliusProduct): Product => ({
 const normalizeProductVariant = (variant: SyliusProductVariant): ProductVariant => {
   return {
     id: variant.id.toString(),
+    code: variant.code,
     title: variant.name,
     availableForSale: variant.inStock,
     selectedOptions: variant.optionValues.map((optionValue) => {
