@@ -4,6 +4,8 @@ import { useRouter } from 'next/navigation';
 
 import clsx from 'clsx';
 import type { CartItem } from 'lib/sylius/types';
+import { useTransition } from 'react';
+import { removeItem } from './actions';
 
 export default function DeleteItemButton({ item }: { item: CartItem }) {
   const router = useRouter();
