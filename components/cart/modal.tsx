@@ -163,7 +163,11 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                     </div>
                     <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1 dark:border-neutral-700">
                       <p>Shipping</p>
-                      <p className="text-right">Calculated at checkout</p>
+                      <Price
+                        className="text-right text-base text-black dark:text-white"
+                        amount={cart.cost.shippingAmount.amount}
+                        currencyCode={cart.cost.shippingAmount.currencyCode}
+                      />
                     </div>
                     <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1 dark:border-neutral-700">
                       <p>Total</p>
