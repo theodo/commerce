@@ -109,3 +109,4 @@ export interface GetProductsPayload {
 }
 
 export type AddToCartPayload = { merchandiseId: string; quantity: number };
+export type UpdateCartPayload = { id: string; merchandiseId: string; quantity: number };
