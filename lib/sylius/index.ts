@@ -172,7 +172,9 @@ export const addToCart = async (cartId: string | undefined, payload: AddToCartPa
     quantity: payload[0]?.quantity
   });
 };
-export const removeFromCart = () => {};
+export const removeFromCart = async (cartId: string, itemIds: string[]) => {
+  await syliusRequest(REST_METHODS.DELETE, `/orders/${cartId}/items/${itemIds[0]}`);
+};
 
 export const updateCart = async (cartId: string, payload: UpdateCartPayload[]) => {
   await syliusRequest(
