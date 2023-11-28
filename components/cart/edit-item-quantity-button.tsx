@@ -5,6 +5,7 @@ import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import type { CartItem } from 'lib/sylius/types';
 import LoadingDots from '../loading-dots';
+import { removeItem, updateItemQuantity } from './actions';
 
 export default function EditItemQuantityButton({
   item,
