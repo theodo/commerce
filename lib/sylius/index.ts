@@ -8,7 +8,8 @@ import {
   Cart,
   Collection,
   GetCollectionProductsPayload,
-  GetProductsPayload
+  GetProductsPayload,
+  UpdateCartPayload
 } from './types';
 
 const DOMAIN = `${process.env.SYLIUS_STORE_DOMAIN}`;
@@ -18,12 +19,13 @@ const ENDPOINT = `${DOMAIN}${SYLIUS_API_ENDPOINT}`;
 export default async function syliusRequest(
   method: string,
   path = '',
-  payload?: Record<string, unknown> | undefined
+  payload?: Record<string, unknown> | undefined,
+  contentType?: string
 ) {
   const options: RequestInit = {
     method,
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': contentType ?? 'application/json',
       Accept: 'application/json'
     }
   };
@@ -171,7 +173,17 @@ export const addToCart = async (cartId: string | undefined, payload: AddToCartPa
   });
 };
 export const removeFromCart = () => {};
-export const updateCart = () => {};
+
+export const updateCart = async (cartId: string, payload: UpdateCartPayload[]) => {
+  await syliusRequest(
+    REST_METHODS.PATCH,
+    `/orders/${cartId}/items/${payload[0]?.id}`,
+    {
+      quantity: payload[0]?.quantity
+    },
+    'application/merge-patch+json'
+  );
+};
 
 // Site
 export const getMenu = async () => {
