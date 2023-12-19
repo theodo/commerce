@@ -6,6 +6,7 @@ import { addItem } from 'components/cart/actions';
 import LoadingDots from 'components/loading-dots';
 import { ProductVariant } from 'lib/sylius/types';
 import { useSearchParams } from 'next/navigation';
+import { useTransition } from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
 
 function SubmitButton({
@@ -80,11 +81,8 @@ export function AddToCart({
     )
   );
   const selectedVariantId = variant?.code || defaultVariantId;
-  const title = !availableForSale
-    ? 'Out of stock'
-    : !selectedVariantId
-    ? 'Please select options'
-    : undefined;
+  const actionWithVariant = formAction.bind(null, selectedVariantId);
+
 
   return (
     <form action={actionWithVariant}>
