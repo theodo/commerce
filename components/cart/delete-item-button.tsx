@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import LoadingDots from 'components/loading-dots';
 import type { CartItem } from 'lib/sylius/types';
 import { useFormState, useFormStatus } from 'react-dom';
+import { removeItem } from './actions';
 
 function SubmitButton() {
   const { pending } = useFormStatus();
